@@ -44,17 +44,13 @@ const theme = createTheme({
         root: {
           marginTop: 20,
           paddingInline: 20,
-          maxWidth: 720,
         },
       },
-      defaultProps: {
-        maxWidth: 720,
-      },
+      defaultProps: {},
     },
     MuiAppBar: {
       styleOverrides: {
         root: {
-          maxWidth: 720,
           marginInline: 'auto',
         },
       },

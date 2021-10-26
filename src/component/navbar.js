@@ -4,10 +4,11 @@ import { AppBar, Box, Toolbar, Typography, IconButton } from '@mui/material';
 import { useState } from 'react';
 
 function Navbar() {
+  const gmt = -(new Date().getTimezoneOffset() / 60);
   const [cTime, setCTime] = useState();
 
   const updateTime = () => {
-    let time = new Date().toLocaleTimeString([], {
+    const time = new Date().toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit',
     });
@@ -52,7 +53,8 @@ function Navbar() {
               textAlign: 'center',
             }}
           >
-            {cTime}
+            {cTime}, GMT {gmt < 0 ? '-' : '+'}
+            {gmt}
           </Typography>
         </Box>
 

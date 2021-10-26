@@ -1,8 +1,26 @@
 import { Card, Container, Box, Typography } from '@mui/material';
 
 function City({ data }) {
+  const d = new Date();
+  const day = d.toLocaleDateString([], {
+    weekday: 'long',
+  });
+  const month = d.toLocaleDateString([], { month: 'short' });
+  const date = d.getDate();
+  const year = d.getFullYear();
+
   return (
     <Container>
+      <Typography variant='overline' lineHeight='1'>
+        {day}
+      </Typography>
+      <Typography
+        variant='h6'
+        lineHeight='2'
+        sx={{ mb: 10 / 8, fontWeight: 400 }}
+      >
+        {month}' {date}, {year}.
+      </Typography>
       <Card
         variant='outlined'
         sx={{
