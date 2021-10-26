@@ -98,20 +98,24 @@ function App() {
   const city = 'depok';
 
   useEffect(() => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
-    )
-      .then(res => res.json())
-      .then(
-        data => {
-          setData(data);
-          setIsLoad(true);
-        },
-        error => {
-          setIsLoad(true);
-          setError(error);
-        }
-      );
+    const request = async () => {
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`
+      )
+        .then(res => res.json())
+        .then(
+          data => {
+            setData(data);
+            setIsLoad(true);
+          },
+          error => {
+            setIsLoad(true);
+            setError(error);
+          }
+        );
+    };
+    setInterval(request, 1000);
+    return () => clearInterval(request);
   }, []);
 
   if (error) {
