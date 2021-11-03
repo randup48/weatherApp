@@ -11,7 +11,9 @@ function Detail({ icon, title, detail }) {
     >
       <Box sx={{ mr: 15 / 8 }}>{icon}</Box>
       <Box>
-        <Typography variant='overline'>{title}</Typography>
+        <Typography variant='overline' lineHeight={0}>
+          {title}
+        </Typography>
         <Typography variant='subtitle2'>{detail}</Typography>
       </Box>
     </Box>

@@ -84,6 +84,7 @@ const theme = createTheme({
       opacity: 0.65,
     },
     overline: {
+      opacity: 0.65,
       letterSpacing: 0.5,
       textTransform: 'capitalize',
     },
