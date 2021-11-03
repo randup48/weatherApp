@@ -1,6 +1,7 @@
 import { Card, Container, Box, Typography } from '@mui/material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTint, faWind } from '@fortawesome/free-solid-svg-icons';
+import Detail from './detail';
 
 function Forecast({ title, data }) {
   const options = { weekday: 'long' };
@@ -8,17 +9,18 @@ function Forecast({ title, data }) {
   return (
     <Container>
       <Typography variant='overline'>{title}</Typography>
-      <Card variant='outlined'>
+      <Card variant='outlined' elevation={0}>
         {/* header */}
         <Box
           sx={{
             display: 'flex',
             justifyContent: 'space-between',
             height: '100%',
+            alignItems: 'center',
           }}
         >
           <Box>
-            <Typography variant='subtitle1'>
+            <Typography variant='subtitle1' lineHeight={0.8}>
               {new Intl.DateTimeFormat('en-US', options).format(new Date())}
             </Typography>
             <Typography variant='caption'>{data.weather[0].main}</Typography>
@@ -30,48 +32,21 @@ function Forecast({ title, data }) {
         <Box
           sx={{
             display: 'flex',
-            alignItems: 'center',
-            mt: 20 / 8,
+            justifyContent: 'space-between',
+            mt: 15 / 8,
+            gap: 20 / 8,
           }}
         >
-          <Box
-            sx={{
-              width: 24,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mr: 10 / 8,
-            }}
-          >
-            <FontAwesomeIcon icon={faWind} />
-          </Box>
-
-          <Typography variant='subtitle2'>
-            {data.wind.speed} <Typography variant='caption'> m/s</Typography>
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            mt: 10 / 8,
-          }}
-        >
-          <Box
-            sx={{
-              width: 24,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              mr: 10 / 8,
-            }}
-          >
-            <FontAwesomeIcon icon={faTint} />
-          </Box>
-
-          <Typography variant='subtitle2'>
-            {data.main.humidity} <Typography variant='caption'>%</Typography>
-          </Typography>
+          <Detail
+            icon={<FontAwesomeIcon icon={faWind} size='lg' />}
+            title='Wind Spd'
+            detail={data.wind.speed + ' m/s'}
+          />
+          <Detail
+            icon={<FontAwesomeIcon icon={faTint} size='lg' />}
+            title='Humidity'
+            detail={data.main.humidity + ' %'}
+          />
         </Box>
       </Card>
     </Container>

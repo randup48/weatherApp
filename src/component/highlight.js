@@ -4,6 +4,7 @@ import {
 } from '@mui/icons-material';
 import { Card, Container, Box, Typography } from '@mui/material';
 import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded';
+import Detail from './detail';
 
 function Highlight({ title, data }) {
   function convertUnix(data) {
@@ -46,38 +47,16 @@ function Highlight({ title, data }) {
             gap: 20 / 8,
           }}
         >
-          <Box
-            sx={{
-              width: '50%',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <ArrowCircleUpTwoTone
-              color='primary'
-              fontSize='large'
-              sx={{ mr: 10 / 8 }}
-            />
-            <Typography variant='subtitle2' sx={{ display: 'inline' }}>
-              {convertUnix(data.sys.sunrise)}
-            </Typography>
-          </Box>
-          <Box
-            sx={{
-              width: '50%',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            <ArrowCircleDownTwoTone
-              color='primary'
-              fontSize='large'
-              sx={{ mr: 10 / 8 }}
-            />
-            <Typography variant='subtitle2' sx={{ display: 'inline' }}>
-              {convertUnix(data.sys.sunset)}
-            </Typography>
-          </Box>
+          <Detail
+            icon={<ArrowCircleUpTwoTone color='primary' fontSize='large' />}
+            title='Sunrise'
+            detail={convertUnix(data.sys.sunrise)}
+          />
+          <Detail
+            icon={<ArrowCircleDownTwoTone color='primary' fontSize='large' />}
+            title='Sunset'
+            detail={convertUnix(data.sys.sunset)}
+          />
         </Box>
       </Card>
     </Container>
